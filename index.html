@@ -30,7 +30,7 @@
   "web": "www.bvalibaug.com",
   "address": "Nagaon Bandar Road, Nagaon, Alibaug 402204",
   "notes": [
-    "A 5% service charge is levied on the total bill.",
+    "A 10% service charge is levied on the total bill.",
     "Dishes marked with a clock need a pre-order before 3pm.",
     "\"As per catch\" is priced on the day, by weight of the day's catch."
   ],
@@ -444,6 +444,7 @@ main{max-width:720px;margin:0 auto;padding:0 20px 40px}
 footer{background:var(--veneer);border-top:1px solid var(--rule);padding:36px 22px 46px;text-align:center}
 footer .thanks{font-size:20px;font-weight:700;letter-spacing:.02em;color:var(--plum);margin:0 0 18px}
 .notes{max-width:420px;margin:0 auto 22px;font-size:12.5px;color:#7A6559;line-height:1.7}
+.notes .charge{display:block;font-size:14px;font-weight:700;color:var(--plum);margin-bottom:8px}
 .contact a{display:block;color:var(--plum);text-decoration:none;font-weight:600;font-size:15px;margin:5px 0}
 .addr{font-size:12.5px;color:#7A6559;margin-top:12px;line-height:1.5}
 .no-results{padding:50px 0;text-align:center;color:var(--muted);font-size:15px}
@@ -521,8 +522,8 @@ body.editing{padding-bottom:96px}
   document.getElementById('rkicker').textContent = DATA.kicker;
   document.getElementById('rtag').textContent = DATA.tagline;
   document.title = DATA.restaurant + ' — Menu | Nagaon, Alibaug';
-  document.getElementById('notes').innerHTML = (DATA.notes||[]).map(function(n){
-    return '<div>'+esc(n)+'</div>'; }).join('');
+  document.getElementById('notes').innerHTML = (DATA.notes||[]).map(function(n, i){
+    return '<div'+(i === 0 ? ' class="charge"' : '')+'>'+esc(n)+'</div>'; }).join('');
   document.getElementById('contact').innerHTML =
     '<a href="tel:'+esc(DATA.phone)+'">'+esc(DATA.phone)+'</a>'+
     '<a href="mailto:'+esc(DATA.email)+'">'+esc(DATA.email)+'</a>'+
